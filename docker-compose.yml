@@ -21,7 +21,11 @@ nginx:
 
 hackmdPostgres:
   image: postgres
+  volumes:
+    - /container-data/metabase/dumps:/dumps
+    - /container-data/metabase/pgdata:/pgdata
   environment:
+    - PGDATA=/pgdata
     - POSTGRES_USER=hackmd
     - POSTGRES_PASSWORD=hackmdpass
     - POSTGRES_DB=hackmd
