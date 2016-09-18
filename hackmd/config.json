@@ -1,6 +1,5 @@
 {
     "production": {
-        "urladdport": true,
         "protocolusessl": true,
         "usecdn": true,
         "sessionsecret": "9496e356fb7f913f10440b14",
