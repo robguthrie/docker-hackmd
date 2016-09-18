@@ -15,6 +15,7 @@ nginx:
     - ./nginx/html:/usr/share/nginx/html
   ports:
     - 443:443
+    - 80:80
   links:
     - hackmd
 
@@ -30,10 +31,10 @@ hackmd:
   environment:
     - POSTGRES_USER=hackmd
     - POSTGRES_PASSWORD=hackmdpass
+    - VIRTUAL_HOST=hackmd.loomio.io
+    - LETSENCRYPT_HOST=hackmd.loomio.io
+    - LETSENCRYPT_EMAIL=devops@loomio.org
   links:
     - hackmdPostgres
   ports:
     - "3000:3000"
-    - VIRTUAL_HOST=chat.enspiral.com
-    - LETSENCRYPT_HOST=chat.enspiral.com
-    - LETSENCRYPT_EMAIL=rob@enspiral.com
