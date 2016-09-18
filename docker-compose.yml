@@ -1,9 +1,30 @@
+letsencrypt:
+  image: jrcs/letsencrypt-nginx-proxy-companion
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    - ./certificates:/etc/nginx/certs:rw
+  volumes_from:
+    - nginx
+
+nginx:
+  image: jwilder/nginx-proxy
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+    - ./certificates:/etc/nginx/certs:ro
+    - ./nginx/vhost.d:/etc/nginx/vhost.d
+    - ./nginx/html:/usr/share/nginx/html
+  ports:
+    - 443:443
+  links:
+    - hackmd
+
 hackmdPostgres:
   image: postgres
   environment:
     - POSTGRES_USER=hackmd
     - POSTGRES_PASSWORD=hackmdpass
     - POSTGRES_DB=hackmd
+
 hackmd:
   image: hackmdio/hackmd:0.4.4
   environment:
@@ -13,3 +34,6 @@ hackmd:
     - hackmdPostgres
   ports:
     - "3000:3000"
+    - VIRTUAL_HOST=chat.enspiral.com
+    - LETSENCRYPT_HOST=chat.enspiral.com
+    - LETSENCRYPT_EMAIL=rob@enspiral.com
