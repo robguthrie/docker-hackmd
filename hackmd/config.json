@@ -8,6 +8,14 @@
             "host": "hackmdPostgres",
             "port": "5432",
             "dialect": "postgres"
+        },
+        "imgur": {
+          "clientID": "f071e0c48713e0d",
+          "clientSecret": "949691083b52bebab6aae356fb7f913f10440b14"
+        },
+        "github": {
+            "clientID": "dfd0ff9571f64d00afa2",
+            "clientSecret": "6fd35e79bbb259d490751f047490d4ac094449aa"
         }
     }
 }
