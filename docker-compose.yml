@@ -31,7 +31,8 @@ hackmdPostgres:
     - POSTGRES_DB=hackmd
 
 hackmd:
-  image: hackmdio/hackmd:0.4.4
+  # image: hackmdio/hackmd:0.4.4
+  build: hackmd
   environment:
     - POSTGRES_USER=hackmd
     - POSTGRES_PASSWORD=hackmdpass
