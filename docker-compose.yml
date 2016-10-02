@@ -20,7 +20,7 @@ nginx:
     - hackmd
 
 hackmdPostgres:
-  image: postgres
+  image: postgres:9.5
   volumes:
     - /container-data/metabase/dumps:/dumps
     - /container-data/metabase/pgdata:/pgdata
